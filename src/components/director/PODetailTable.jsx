@@ -1,10 +1,10 @@
 import { useState, useEffect, useMemo } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import FilterBar from "./FilterBar";
 
-const PODetailTable = () => {
-  const navigate = useNavigate();
+const PODetailTable = ({ onBack }) => {
   const location = useLocation();
+  const navigate = useNavigate();
 
   const userFilters = useMemo(() => location.state?.userFilters || {}, [location.state?.userFilters]);
   const filterFromCard = location.state?.filter || "all";
@@ -17,6 +17,8 @@ const PODetailTable = () => {
     poType: userFilters.poType || "",
     poAge: "",
   });
+
+  const [selectedPO, setSelectedPO] = useState(null);
 
   const poData = [
     {
@@ -77,7 +79,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-01-09",
       "country": "China",
       "customer": "Ciena Corporation",
-      "poAge": 2
+      "poAge": 21
     },
     {
       "poNumber": "PO-1007",
@@ -147,7 +149,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-06-10",
       "country": "Canada",
       "customer": "Fujitsu",
-      "poAge": 6
+      "poAge": 60
     },
     {
       "poNumber": "PO-1014",
@@ -2107,7 +2109,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-06-07",
       "country": "France",
       "customer": "Broadcom Inc.",
-      "poAge": 12
+      "poAge": 120
     },
     {
       "poNumber": "PO-1210",
@@ -2137,7 +2139,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-03-27",
       "country": "Brazil",
       "customer": "ZTE",
-      "poAge": 75
+      "poAge": 52
     },
     {
       "poNumber": "PO-1213",
@@ -2157,7 +2159,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-11-28",
       "country": "China",
       "customer": "Samsung Networks",
-      "poAge": 23
+      "poAge": 56
     },
     {
       "poNumber": "PO-1215",
@@ -2167,7 +2169,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-09-22",
       "country": "China",
       "customer": "Nokia",
-      "poAge": 49
+      "poAge": 65
     },
     {
       "poNumber": "PO-1216",
@@ -2177,7 +2179,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-02-27",
       "country": "Brazil",
       "customer": "Samsung Networks",
-      "poAge": 4
+      "poAge": 154
     },
     {
       "poNumber": "PO-1217",
@@ -2187,7 +2189,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-07-04",
       "country": "Germany",
       "customer": "Juniper Networks",
-      "poAge": 54
+      "poAge": 145
     },
     {
       "poNumber": "PO-1218",
@@ -2197,7 +2199,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-11-27",
       "country": "India",
       "customer": "Nokia",
-      "poAge": 17
+      "poAge": 178
     },
     {
       "poNumber": "PO-1219",
@@ -2207,7 +2209,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-08-07",
       "country": "China",
       "customer": "Arista Networks",
-      "poAge": 77
+      "poAge": 197
     },
     {
       "poNumber": "PO-1220",
@@ -2217,7 +2219,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-03-10",
       "country": "Germany",
       "customer": "Juniper Networks",
-      "poAge": 12
+      "poAge": 102
     },
     {
       "poNumber": "PO-1221",
@@ -2227,7 +2229,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-04-09",
       "country": "Brazil",
       "customer": "Juniper Networks",
-      "poAge": 10
+      "poAge": 100
     },
     {
       "poNumber": "PO-1222",
@@ -2267,7 +2269,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-10-09",
       "country": "Australia",
       "customer": "Nokia",
-      "poAge": 2
+      "poAge": 41
     },
     {
       "poNumber": "PO-1226",
@@ -2307,7 +2309,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-02-11",
       "country": "UK",
       "customer": "Fujitsu",
-      "poAge": 18
+      "poAge": 87
     },
     {
       "poNumber": "PO-1230",
@@ -2317,7 +2319,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-05-22",
       "country": "UK",
       "customer": "Samsung Networks",
-      "poAge": 23
+      "poAge": 32
     },
     {
       "poNumber": "PO-1231",
@@ -2377,7 +2379,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-12-20",
       "country": "China",
       "customer": "Nokia",
-      "poAge": 103
+      "poAge": 195
     },
     {
       "poNumber": "PO-1237",
@@ -2387,7 +2389,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-10-19",
       "country": "Brazil",
       "customer": "Huawei",
-      "poAge": 110
+      "poAge": 188
     },
     {
       "poNumber": "PO-1238",
@@ -2397,7 +2399,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-06-05",
       "country": "India",
       "customer": "Ericsson",
-      "poAge": 16
+      "poAge": 35
     },
     {
       "poNumber": "PO-1239",
@@ -2407,7 +2409,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-11-19",
       "country": "Japan",
       "customer": "Samsung Networks",
-      "poAge": 110
+      "poAge": 101
     },
     {
       "poNumber": "PO-1240",
@@ -2417,7 +2419,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-12-10",
       "country": "Canada",
       "customer": "Ciena Corporation",
-      "poAge": 99
+      "poAge": 100
     },
     {
       "poNumber": "PO-1241",
@@ -2427,7 +2429,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-12-23",
       "country": "Japan",
       "customer": "Huawei",
-      "poAge": 94
+      "poAge": 194
     },
     {
       "poNumber": "PO-1242",
@@ -2437,7 +2439,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-05-13",
       "country": "France",
       "customer": "Huawei",
-      "poAge": 49
+      "poAge": 150
     },
     {
       "poNumber": "PO-1243",
@@ -2457,7 +2459,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-05-22",
       "country": "India",
       "customer": "Huawei",
-      "poAge": 6
+      "poAge": 158
     },
     {
       "poNumber": "PO-1245",
@@ -2467,7 +2469,7 @@ const PODetailTable = () => {
       "invoiceDate": "2024-01-13",
       "country": "USA",
       "customer": "Arista",
-      "poAge": 80
+      "poAge": 100
     },
     {
       "poNumber": "PO-1246",
@@ -2477,7 +2479,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-09-20",
       "country": "China",
       "customer": "Cisco Systems",
-      "poAge": 20
+      "poAge": 40
     },
     {
       "poNumber": "PO-1247",
@@ -2487,7 +2489,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-04-11",
       "country": "France",
       "customer": "NEC Corporation",
-      "poAge": 14
+      "poAge": 65
     },
     {
       "poNumber": "PO-1248",
@@ -2497,7 +2499,7 @@ const PODetailTable = () => {
       "invoiceDate": "2023-01-08",
       "country": "Germany",
       "customer": "Huawei",
-      "poAge": 10
+      "poAge": 56
     },
     {
       "poNumber": "PO-1249",
@@ -2517,9 +2519,8 @@ const PODetailTable = () => {
       "invoiceDate": "2023-03-24",
       "country": "Australia",
       "customer": "Ericsson",
-      "poAge": 26
+      "poAge": 65
     },
-   
   ];
 
   const [currentPage, setCurrentPage] = useState(1);
@@ -2527,7 +2528,7 @@ const PODetailTable = () => {
 
   const handleFilterChange = (updatedFilters) => {
     setFilters(updatedFilters);
-    setCurrentPage(1); // Reset to first page on filter change
+    setCurrentPage(1);
   };
 
   const getFilteredData = () => {
@@ -2552,10 +2553,20 @@ const PODetailTable = () => {
   const totalPages = Math.max(1, Math.ceil(filteredData.length / itemsPerPage));
   const currentData = filteredData.slice((currentPage - 1) * itemsPerPage, currentPage * itemsPerPage);
 
-  const handleBackClick = () => navigate(-1);
+  const handleBackClick = () => {
+    if (typeof onBack === "function") {
+      onBack(); // If a prop function is provided, call it
+    } else if (location.state?.from) {
+      navigate(location.state.from); // Go back to the originating route (StatCard or dashboard)
+    } else {
+      navigate(-1); // Fallback to browser history
+    }
+  };
 
   const goToPage = (page) => {
-    if (page >= 1 && page <= totalPages) setCurrentPage(page);
+    if (page >= 1 && page <= totalPages) {
+      setCurrentPage(page);
+    }
   };
 
   useEffect(() => {
@@ -2573,65 +2584,107 @@ const PODetailTable = () => {
 
       <FilterBar onFilterChange={handleFilterChange} showPOAgeFilter={true} filters={filters} />
 
-      <h2 className="text-xl font-semibold mb-4">PO Details Table ({filterFromCard})</h2>
+      <div className="table-container">
+        <h2 className="text-xl font-semibold mb-4">PO Details Table ({filterFromCard})</h2>
 
-      {filteredData.length === 0 ? (
-        <div className="text-center text-slate-300 py-10">No matching PO records found.</div>
-      ) : (
-        <>
-          <div className="overflow-auto rounded-lg border border-slate-700">
-            <table className="min-w-full text-sm text-left">
-              <thead className="bg-slate-700 text-slate-300">
-                <tr>
-                  <th className="px-4 py-2">PO Number</th>
-                  <th>Year</th>
-                  <th>Month</th>
-                  <th>PO Type</th>
-                  <th>Invoice Date</th>
-                  <th>Country</th>
-                  <th>Customer</th>
-                  <th>PO Age</th>
-                </tr>
-              </thead>
-              <tbody>
-                {currentData.map((po, index) => (
-                  <tr key={index} className="border-t border-slate-700 hover:bg-slate-600">
-                    <td className="px-4 py-2">{po.poNumber}</td>
-                    <td>{po.year}</td>
-                    <td>{po.month}</td>
-                    <td>{po.poType}</td>
-                    <td>{po.invoiceDate}</td>
-                    <td>{po.country}</td>
-                    <td>{po.customer}</td>
-                    <td>{po.poAge}</td>
+        {filteredData.length === 0 ? (
+          <div className="text-center text-slate-300 py-10">No matching PO records found.</div>
+        ) : (
+          <>
+            <div className="overflow-auto rounded-lg border border-slate-700">
+              <table className="min-w-full text-sm text-left">
+                <thead className="bg-slate-700 text-slate-300">
+                  <tr>
+                    <th className="px-4 py-2">PO Number</th>
+                    <th>Year</th>
+                    <th>Month</th>
+                    <th>PO Type</th>
+                    <th>Invoice Date</th>
+                    <th>Country</th>
+                    <th>Customer</th>
+                    <th>PO Age</th>
+                    <th>Action</th>
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {currentData.map((po, index) => (
+                    <tr
+                      key={index}
+                      className={`border-t border-slate-700 hover:bg-slate-500 ${
+                        po.poAge >= 180
+                          ? "bg-red-600 text-white"
+                          : po.poAge >= 120
+                          ? "bg-orange-400 text-white"
+                          : po.poAge >= 60
+                          ? "bg-orange-200 text-black"
+                          : "bg-slate-800 text-white"
+                      }`}
+                    >
+                      <td className="px-4 py-2">{po.poNumber}</td>
+                      <td>{po.year}</td>
+                      <td>{po.month}</td>
+                      <td>{po.poType}</td>
+                      <td>{po.invoiceDate}</td>
+                      <td>{po.country}</td>
+                      <td>{po.customer}</td>
+                      <td className="text-center">{po.poAge}</td>
+                      <td>
+                        <button
+                          onClick={() => setSelectedPO(po)}
+                          className="bg-blue-600 hover:bg-blue-500 text-white px-1.5 py-1 text-xs rounded-md transition-all"
+                        >
+                          View Details
+                        </button>
+                      </td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
 
-          <div className="flex justify-center items-center mt-4">
+            <div className="flex justify-center items-center mt-4">
+              <button
+                onClick={() => goToPage(currentPage - 1)}
+                className="text-slate-300 bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-md"
+                disabled={currentPage === 1}
+              >
+                &lt;&lt; Prev
+              </button>
+              <span className="mx-4 text-slate-300">
+                Page {currentPage} of {totalPages}
+              </span>
+              <button
+                onClick={() => goToPage(currentPage + 1)}
+                className="text-slate-300 bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-md"
+                disabled={currentPage === totalPages}
+              >
+                Next &gt;&gt;
+              </button>
+            </div>
+          </>
+        )}
+      </div>
+
+      {/* Drill-Down Panel */}
+      {selectedPO && (
+        <div className="details-container mt-8 bg-slate-700 p-6 rounded-lg border border-slate-600">
+          <div className="flex justify-between items-center mb-4">
+            <h3 className="text-lg font-semibold">PO Details: {selectedPO.poNumber}</h3>
             <button
-              onClick={() => goToPage(currentPage - 1)}
-              className="text-slate-300 bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-md"
-              disabled={currentPage === 1}
+              onClick={() => setSelectedPO(null)}
+              className="text-red-400 hover:text-red-300 font-bold"
             >
-              &lt;&lt; Prev
-            </button>
-
-            <span className="mx-4 text-slate-300">
-              Page {currentPage} of {totalPages}
-            </span>
-
-            <button
-              onClick={() => goToPage(currentPage + 1)}
-              className="text-slate-300 bg-slate-700 hover:bg-slate-600 px-4 py-2 rounded-md"
-              disabled={currentPage === totalPages}
-            >
-              Next &gt;&gt;
+              Close ✕
             </button>
           </div>
-        </>
+          <div className="grid grid-cols-2 gap-4 text-sm">
+            <p><strong>Customer:</strong> {selectedPO.customer}</p>
+            <p><strong>PO Type:</strong> {selectedPO.poType}</p>
+            <p><strong>Invoice Date:</strong> {selectedPO.invoiceDate}</p>
+            <p><strong>Country:</strong> {selectedPO.country}</p>
+            <p><strong>PO Age:</strong> {selectedPO.poAge} days</p>
+          </div>
+        </div>
       )}
     </div>
   );

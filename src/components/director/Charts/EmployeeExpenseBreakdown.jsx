@@ -1,5 +1,3 @@
-// src/components/analytics/EmployeeExpenseBreakdown.jsx
-
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import employeeExpenses from "../../../data/employeeExpenses";
@@ -12,7 +10,7 @@ const EmployeeExpenseBreakdown = () => {
       backgroundColor: "#1e293b", // slate-800
     },
     title: {
-      text: "Employee Expense Breakdown",
+      text: "",
       style: {
         fontSize: "16px",
         color: "#ffffff", // white
@@ -72,7 +70,10 @@ const EmployeeExpenseBreakdown = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto my-6 bg-slate-800 p-4 rounded-xl shadow-md">
+    <div className="bg-slate-800 p-4 rounded-md">
+      <div className="flex justify-between items-center mb-4">
+        <h2 className="text-lg font-semibold text-white">Employee Expense Breakdown</h2>
+      </div>
       <HighchartsReact highcharts={Highcharts} options={expenseBreakdownOptions} />
     </div>
   );

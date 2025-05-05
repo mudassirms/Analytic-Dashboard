@@ -4,7 +4,8 @@ import LoginPage from "./components/auth/LoginPage";
 import FloatingChatbot from "./components/chatbot/floatingChatbot";
 import DirectorView from "./components/director/DirectorView";
 import PODetailTable from "./components/director/PODetailTable"; // 👈 Import new detail table
-
+import ManagerView from "./components/manager/ManagerView";
+import RegionDetails from "./components/manager/Charts/RegionDetails";
 const isAuthenticated = () => {
   return localStorage.getItem("loggedIn") === "true";
 };
@@ -41,7 +42,10 @@ function App() {
               <div className="flex-1 overflow-auto p-4 z-10">
                 <Routes>
                   <Route path="director" element={<DirectorView />} />
-                  <Route path="director/po-details" element={<PODetailTable />} /> {/* 👈 New route */}
+                  <Route path="director/po-details" element={<PODetailTable />} />
+                  <Route path="manager" element={<ManagerView/>}/>
+                  <Route path="/manager/region-details" element={<RegionDetails />} />
+                   {/* 👈 New route */}
                 </Routes>
               </div>
 

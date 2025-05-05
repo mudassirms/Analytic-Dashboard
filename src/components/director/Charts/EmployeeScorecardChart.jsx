@@ -10,10 +10,10 @@ const EmployeeScoreDonut = () => {
     chart: {
       type: "pie",
       backgroundColor: "#1e293b",
-      height: 250,
+      height: 250, // slightly reduced to prevent overflow
     },
     title: {
-      text: `<span style="color:#fff;font-size:12px">Performance</span>`,
+      text: `<span style="color:#fff;font-size:13px">Performance</span>`,
       align: "center",
       verticalAlign: "middle",
       y: 40,
@@ -53,9 +53,9 @@ const EmployeeScoreDonut = () => {
   };
 
   return (
-    <div className="w-full max-w-xl h-[300px] mx-auto bg-slate-800 p-4 rounded-xl shadow-md overflow-hidden">
-      {/* Header: Dropdown aligned right */}
-      <div className="flex justify-between items-center mb-2">
+    <div className="w-full max-w-xl h-[370px] mx-auto bg-slate-800 p-4 rounded-xl shadow-md">
+      {/* Header */}
+      <div className="flex justify-between items-center mb-3">
         <h2 className="text-white text-base font-semibold">Employee Performance</h2>
         <select
           className="p-1.5 rounded-md bg-slate-700 text-white text-sm border border-slate-600"
@@ -79,20 +79,22 @@ const EmployeeScoreDonut = () => {
         </select>
       </div>
 
-      {/* Chart and Details */}
-      <div className="flex gap-2 h-[210px]">
+      {/* Content */}
+      <div className="flex gap-4 h-[270px]">
         {/* Chart */}
-        <div className="flex-1">
+        <div className="flex-1 flex items-center justify-center">
           {selectedEmployee ? (
-            <HighchartsReact highcharts={Highcharts} options={options} />
+            <div className="w-full max-w-[180px]">
+              <HighchartsReact highcharts={Highcharts} options={options} />
+            </div>
           ) : (
-            <div className="h-full flex items-center justify-center text-sm text-white bg-slate-700 rounded-md">
+            <div className="h-full flex items-center justify-center text-sm text-white bg-slate-700 rounded-md w-full">
               Please select an employee
             </div>
           )}
         </div>
 
-        {/* Employee Details */}
+        {/* Details */}
         {selectedEmployee && (
           <div className="flex-1 text-white text-xs overflow-y-auto">
             <h3 className="font-medium mb-1">Employee Details</h3>

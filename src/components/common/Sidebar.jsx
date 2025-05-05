@@ -14,7 +14,7 @@ const SIDEBAR_ITEMS = [
     name: "Manager View",
     icon: UserCog,
     color: "#38BDF8",
-    href: "/director",
+    href: "/manager",
   },
 ];
 

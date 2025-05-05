@@ -14,7 +14,7 @@ import POTrendChart from "./Charts/POTrendChart";
 import POChart from "./Charts/TotalPOandAge";
 import Heatmap from "./Charts/CountryCustomerheatmap";
 import PieExpenseBreakdown from "./Charts/PieExpenseBreakdown";
-import PODetailTable from "./PODetailTable"; // 👈 Import the PO table
+import PODetailTable from "./PODetailTable"; 
 
 import {
   poAgeDistribution,
@@ -54,10 +54,12 @@ const DirectorView = () => {
             <BillingStatusAgeChart />
             <RejectedSiteChart />
             <ExpenseRequestChart />
-            <EmployeeExpenseBreakdown />
             <InsourceOutsourceReport />
-            <PieExpenseBreakdown />
             <EmployeeScorecardChart score={89} />
+
+            <PieExpenseBreakdown />
+            <EmployeeExpenseBreakdown />
+
             <POAgeDistribution
               dataByCountry={poAgeDistribution}
               dataByCustomer={poAgeDistributionCustomer}
@@ -69,12 +71,12 @@ const DirectorView = () => {
             <POTrendChart poTrendData={poTrendData} yearlyData={[]} />
           </div>
 
-          <div className="mt-8 text-center">
+          <div className="mt-8 text-left">
             <button
               onClick={handleViewTable}
               className="mt-4 bg-slate-700 hover:bg-slate-600 text-white p-4 rounded-md w-full sm:w-auto"
             >
-              View PO Table
+              View PO Data
             </button>
           </div>
         </>
