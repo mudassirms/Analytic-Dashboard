@@ -32,7 +32,7 @@ export default function FloatingChatbot() {
           {/* Chat Body */}
           <div className="p-4 h-80 overflow-y-auto text-sm text-cyan-200 space-y-2">
             <p className="italic">“How can I help you navigate the dashboard?”</p>
-            <div className="text-slate-400">E.g. "Show teacher performance trends"</div>
+            <div className="text-slate-400">E.g. "Show Country wise total PO Amount"</div>
           </div>
 
           {/* Input Section */}

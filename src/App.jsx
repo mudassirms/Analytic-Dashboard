@@ -1,11 +1,9 @@
 import { Route, Routes, Navigate, useNavigate } from "react-router-dom";
 import Sidebar from "./components/common/Sidebar";
 import LoginPage from "./components/auth/LoginPage";
-import TeachersPage from "./pages/TeachersPage";
-import StudentPage from "./pages/StudentPage";
-import SettingsPage from "./pages/SettingsPage";
-import SchoolsPage from "./pages/SchoolPage";
-import FloatingChatbot from "./components/chatbot/floatingChatbot"; // 👈 Import the chatbot
+import FloatingChatbot from "./components/chatbot/floatingChatbot";
+import DirectorView from "./components/director/DirectorView";
+import PODetailTable from "./components/director/PODetailTable"; // 👈 Import new detail table
 
 const isAuthenticated = () => {
   return localStorage.getItem("loggedIn") === "true";
@@ -40,12 +38,12 @@ function App() {
 
               <Sidebar handleLogout={handleLogout} />
 
-              <Routes>
-                <Route path="/teachers" element={<TeachersPage />} />
-                <Route path="/student" element={<StudentPage />} />
-                <Route path="/settings" element={<SettingsPage />} />
-                <Route path="/" element={<SchoolsPage />} />
-              </Routes>
+              <div className="flex-1 overflow-auto p-4 z-10">
+                <Routes>
+                  <Route path="director" element={<DirectorView />} />
+                  <Route path="director/po-details" element={<PODetailTable />} /> {/* 👈 New route */}
+                </Routes>
+              </div>
 
               {/* 🧠 Floating Chatbot */}
               <FloatingChatbot />

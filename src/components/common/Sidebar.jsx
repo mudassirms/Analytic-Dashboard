@@ -1,13 +1,16 @@
-import { GraduationCap, Menu, Settings, School, Building, LogOut } from "lucide-react"; // Import LogOut icon
+import { LogOut, BarChart2 } from "lucide-react"; // 👈 Added BarChart2 for Director View
 import { useState } from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const SIDEBAR_ITEMS = [
-	{ name: "School", icon: Building, color: "6EE8B5", href: "/" },
-	{ name: "Student", icon: GraduationCap, color: "#10B981", href: "/Student" },
-	{ name: "Teachers", icon: School, color: "#8B5CF6", href: "/teachers" },
-	{ name: "Settings", icon: Settings, color: "#6EE7B7", href: "/settings" },
+	{
+		name: "Director View",
+		icon: BarChart2,
+		color: "#38BDF8", // sky-400
+		href: "/director",
+	},
+	// You can add more views like Manager View here
 ];
 
 const Sidebar = ({ handleLogout }) => {
@@ -28,7 +31,7 @@ const Sidebar = ({ handleLogout }) => {
 					onClick={() => setIsSidebarOpen(!isSidebarOpen)}
 					className="p-2 rounded-full hover:bg-gray-700 transition-colors max-w-fit"
 				>
-					<Menu size={24} />
+					{/* You can add a menu icon here */}
 				</motion.button>
 
 				{/* Sidebar Navigation Links */}
