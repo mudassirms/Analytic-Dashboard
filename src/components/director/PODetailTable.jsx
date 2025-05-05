@@ -1,6 +1,9 @@
 import { useState, useEffect, useMemo } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
-import FilterBar from "./FilterBar";
+import * as XLSX from "xlsx";
+import { saveAs } from "file-saver";
+import jsPDF from "jspdf";
+import autoTable from "jspdf-autotable";import FilterBar from "./FilterBar";
 
 const PODetailTable = ({ onBack }) => {
   const location = useLocation();
@@ -2555,11 +2558,11 @@ const PODetailTable = ({ onBack }) => {
 
   const handleBackClick = () => {
     if (typeof onBack === "function") {
-      onBack(); // If a prop function is provided, call it
+      onBack();
     } else if (location.state?.from) {
-      navigate(location.state.from); // Go back to the originating route (StatCard or dashboard)
+      navigate(location.state.from);
     } else {
-      navigate(-1); // Fallback to browser history
+      navigate(-1);
     }
   };
 
@@ -2572,6 +2575,45 @@ const PODetailTable = ({ onBack }) => {
   useEffect(() => {
     setFilters(prev => ({ ...prev, poAge: userFilters.poAge || prev.poAge }));
   }, [userFilters]);
+
+  // Export Functions
+  const exportToCSV = () => {
+    const ws = XLSX.utils.json_to_sheet(filteredData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "PO Details");
+    XLSX.writeFile(wb, "PO_Details.csv");
+  };
+
+  const exportToExcel = () => {
+    const ws = XLSX.utils.json_to_sheet(filteredData);
+    const wb = XLSX.utils.book_new();
+    XLSX.utils.book_append_sheet(wb, ws, "PO Details");
+    const excelBuffer = XLSX.write(wb, { bookType: "xlsx", type: "array" });
+    const data = new Blob([excelBuffer], { type: "application/octet-stream" });
+    saveAs(data, "PO_Details.xlsx");
+  };
+
+  const exportToPDF = () => {
+    const doc = new jsPDF();
+    doc.text("PO Details", 14, 10);
+  
+    autoTable(doc, {
+      head: [["PO Number", "Year", "Month", "PO Type", "Invoice Date", "Country", "Customer", "PO Age"]],
+      body: filteredData.map(po => [
+        po.poNumber,
+        po.year,
+        po.month,
+        po.poType,
+        po.invoiceDate,
+        po.country,
+        po.customer,
+        po.poAge
+      ]),
+      startY: 20,
+    });
+  
+    doc.save("PO_Details.pdf");
+  };
 
   return (
     <div className="p-6 bg-slate-800 rounded-xl text-white">
@@ -2659,6 +2701,28 @@ const PODetailTable = ({ onBack }) => {
                 disabled={currentPage === totalPages}
               >
                 Next &gt;&gt;
+              </button>
+            </div>
+
+            {/* Export Buttons Moved Below Table */}
+            <div className="flex justify-end gap-3 mt-4">
+              <button
+                onClick={exportToCSV}
+                className="bg-blue-600 hover:bg-blue-500 text-white px-3 py-1 rounded-md"
+              >
+                Export CSV
+              </button>
+              <button
+                onClick={exportToExcel}
+                className="bg-green-600 hover:bg-green-500 text-white px-3 py-1 rounded-md"
+              >
+                Export Excel
+              </button>
+              <button
+                onClick={exportToPDF}
+                className="bg-red-600 hover:bg-red-500 text-white px-3 py-1 rounded-md"
+              >
+                Export PDF
               </button>
             </div>
           </>
