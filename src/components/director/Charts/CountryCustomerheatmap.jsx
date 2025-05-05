@@ -68,8 +68,8 @@ const CustomHeatmap = () => {
   const maxValue = Math.max(...data.map((d) => d.value));
 
   return (
-    <div className="p-4 rounded-md bg-slate-800 text-white">
-      <h2 className="text-xl mb-4">Country-Customer Matrix</h2>
+<div className="px-4 pt-3 pb-1 rounded-md bg-slate-800 text-white">
+<h2 className="text-xl mb-4">Country-Customer Matrix</h2>
 
       <div className="flex gap-4 mb-4">
         <select
@@ -94,8 +94,8 @@ const CustomHeatmap = () => {
         </select>
       </div>
 
-      <div className="grid grid-cols-[100px_repeat(3,1fr)] gap-1 text-sm">
-        {/* Header Row */}
+      <div className="grid grid-cols-[80px_repeat(3,1fr)] gap-1 text-xs mb-0">
+      {/* Header Row */}
         <div></div>
         {customers.map((cust) => (
           <div key={cust} className="text-center font-semibold">{cust}</div>

@@ -5,20 +5,20 @@ const InsourceOutsourceReport = () => {
   const insourceOutsourceOptions = {
     chart: {
       type: "pie",
-      backgroundColor: "#1e293b", 
-      height: "300px",
+      backgroundColor: "#1e293b", // slate-800
+      height: 300,
     },
     title: {
       text: "Insource vs Outsource Report",
       style: {
         fontSize: "16px",
-        color: "#ffffff", 
+        color: "#ffffff", // white
       },
     },
     tooltip: {
       pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
-      backgroundColor: "#334155", 
-      style: { color: "#ffffff" }, 
+      backgroundColor: "#334155", // slate-700
+      style: { color: "#ffffff" },
     },
     plotOptions: {
       pie: {
@@ -26,9 +26,9 @@ const InsourceOutsourceReport = () => {
         cursor: "pointer",
         dataLabels: {
           enabled: true,
-          color: "#ffffff",
+          color: "#ffffff", // white
           style: {
-            textOutline: "none", 
+            textOutline: "none",
           },
           format: "<b>{point.name}</b>: {point.percentage:.1f} %",
         },
@@ -39,8 +39,8 @@ const InsourceOutsourceReport = () => {
         name: "Source Type",
         colorByPoint: true,
         data: [
-          { name: "Insource", y: 80, color: "#3b82f6" },
-          { name: "Outsource", y: 20, color: "#ef4444" },
+          { name: "Insource", y: 80, color: "#3b82f6" }, // blue-500
+          { name: "Outsource", y: 20, color: "#ef4444" }, // red-500
         ],
       },
     ],
@@ -48,7 +48,7 @@ const InsourceOutsourceReport = () => {
   };
 
   return (
-    <div className="w-full max-w-sm mx-auto my-6">
+    <div className="w-full max-w-sm mx-auto my-6 bg-slate-800 p-4 rounded-xl shadow-md">
       <HighchartsReact highcharts={Highcharts} options={insourceOutsourceOptions} />
     </div>
   );

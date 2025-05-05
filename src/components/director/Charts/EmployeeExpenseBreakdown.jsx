@@ -8,14 +8,14 @@ const EmployeeExpenseBreakdown = () => {
   const expenseBreakdownOptions = {
     chart: {
       type: "bar",
-      height: "300px",
-      backgroundColor: "#1e293b", 
+      height: 300,
+      backgroundColor: "#1e293b", // slate-800
     },
     title: {
       text: "Employee Expense Breakdown",
       style: {
         fontSize: "16px",
-        color: "#ffffff", 
+        color: "#ffffff", // white
       },
     },
     xAxis: {
@@ -23,7 +23,7 @@ const EmployeeExpenseBreakdown = () => {
       title: { text: null },
       labels: {
         style: {
-          color: "#ffffff", 
+          color: "#cbd5e1", // slate-300
         },
       },
     },
@@ -32,27 +32,27 @@ const EmployeeExpenseBreakdown = () => {
       title: {
         text: "Total Expense",
         style: {
-          color: "#ffffff", 
+          color: "#cbd5e1", // slate-300
         },
       },
       labels: {
         style: {
-          color: "#ffffff", 
+          color: "#cbd5e1", // slate-300
         },
       },
       stackLabels: {
         enabled: true,
         style: {
           fontWeight: "bold",
-          color: "#ffffff", 
+          color: "#ffffff", // white
         },
       },
     },
     legend: {
       reversed: true,
-      backgroundColor: "transparent", 
+      backgroundColor: "transparent",
       itemStyle: {
-        color: "#ffffff", 
+        color: "#e2e8f0", // slate-200
       },
     },
     plotOptions: {
@@ -60,7 +60,7 @@ const EmployeeExpenseBreakdown = () => {
         stacking: "normal",
         dataLabels: {
           enabled: true,
-          color: "#ffffff", 
+          color: "#ffffff", // white
           style: {
             textOutline: "none",
           },
@@ -72,7 +72,7 @@ const EmployeeExpenseBreakdown = () => {
   };
 
   return (
-    <div className="w-full max-w-3xl mx-auto my-6">
+    <div className="w-full max-w-3xl mx-auto my-6 bg-slate-800 p-4 rounded-xl shadow-md">
       <HighchartsReact highcharts={Highcharts} options={expenseBreakdownOptions} />
     </div>
   );

@@ -11,28 +11,28 @@ export const poAgeDistribution = [
   {
     country: "USA",
     data: [
-      { name: "0-7 Days", value: 50 },
-      { name: "8-14 Days", value: 30 },
-      { name: "15-30 Days", value: 25 },
-      { name: "30+ Days", value: 15 },
+      { name: "0-30 Days", value: 50 },
+      { name: "30-60 Days", value: 30 },
+      { name: "60-90 Days", value: 25 },
+      { name: "150+ Days", value: 15 },
     ],
   },
   {
     country: "India",
     data: [
-      { name: "0-7 Days", value: 45 },
-      { name: "8-14 Days", value: 40 },
-      { name: "15-30 Days", value: 35 },
-      { name: "30+ Days", value: 20 },
+      { name: "0-30 Days", value: 45 },
+      { name: "30-60 Days", value: 40 },
+      { name: "60-90 Days", value: 35 },
+      { name: "150+ Days", value: 20 },
     ],
   },
   {
     country: "Germany",
     data: [
-      { name: "0-7 Days", value: 60 },
-      { name: "8-14 Days", value: 28 },
-      { name: "15-30 Days", value: 22 },
-      { name: "30+ Days", value: 10 },
+      { name: "0-30 Days", value: 60 },
+      { name: "30-60 Days", value: 28 },
+      { name: "60-90 Days", value: 22 },
+      { name: "150+ Days", value: 10 },
     ],
   },
 ];
@@ -41,28 +41,28 @@ export const poAgeDistributionCustomer = [
   {
     customer: "Customer A",
     data: [
-      { name: "0-7 Days", value: 35 },
-      { name: "8-14 Days", value: 30 },
-      { name: "15-30 Days", value: 18 },
-      { name: "30+ Days", value: 12 },
+      { name: "0-30 Days", value: 35 },
+      { name: "30-60 Days", value: 30 },
+      { name: "60-90 Days", value: 18 },
+      { name: "150+ Days", value: 12 },
     ],
   },
   {
     customer: "Customer B",
     data: [
-      { name: "0-7 Days", value: 40 },
-      { name: "8-14 Days", value: 25 },
-      { name: "15-30 Days", value: 15 },
-      { name: "30+ Days", value: 18 },
+      { name: "0-30 Days", value: 40 },
+      { name: "30-60 Days", value: 25 },
+      { name: "60-90 Days", value: 15 },
+      { name: "150+ Days", value: 18 },
     ],
   },
   {
     customer: "Customer C",
     data: [
-      { name: "0-7 Days", value: 55 },
-      { name: "8-14 Days", value: 25 },
-      { name: "15-30 Days", value: 30 },
-      { name: "30+ Days", value: 22 },
+      { name: "0-30 Days", value: 55 },
+      { name: "30-60 Days", value: 25 },
+      { name: "60-90 Days", value: 30 },
+      { name: "150+ Days", value: 22 },
     ],
   },
 ];

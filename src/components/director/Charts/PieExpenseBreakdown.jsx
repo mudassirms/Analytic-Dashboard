@@ -1,26 +1,30 @@
+import { useState } from "react";
 import Highcharts from "highcharts";
 import HighchartsReact from "highcharts-react-official";
 import employeeExpenses from "../../../data/employeeExpenses";
 
-const PieExpenseBreakdown = ({ employeeIndex = 2 }) => {
-  const pieData = employeeExpenses.series.map((item) => ({
-    name: item.name,
-    y: item.data[employeeIndex],
-    color: item.color,
-  }));
+const PieExpenseBreakdown = () => {
+  const [selectedEmployeeName, setSelectedEmployeeName] = useState("");
+
+  const selectedEmployeeIndex = employeeExpenses.categories.indexOf(selectedEmployeeName);
+
+  const pieData =
+    selectedEmployeeIndex !== -1
+      ? employeeExpenses.series.map((item) => ({
+          name: item.name,
+          y: item.data[selectedEmployeeIndex],
+          color: item.color,
+        }))
+      : [];
 
   const pieExpenseOptions = {
     chart: {
       type: "pie",
       backgroundColor: "#1e293b",
-      height: "300px",
+      height: 300,
     },
     title: {
-      text: `Expense Distribution: ${employeeExpenses.categories[employeeIndex]}`,
-      style: {
-        fontSize: "16px",
-        color: "#ffffff",
-      },
+      text: null, // Removed title text
     },
     tooltip: {
       pointFormat: "{series.name}: <b>{point.percentage:.1f}%</b>",
@@ -61,8 +65,34 @@ const PieExpenseBreakdown = ({ employeeIndex = 2 }) => {
   };
 
   return (
-    <div className="w-full max-w-sm mx-auto my-4">
-      <HighchartsReact highcharts={Highcharts} options={pieExpenseOptions} />
+    <div className="w-full max-w-xl h-[370px] mx-auto bg-slate-800 p-4 rounded-xl shadow-md">
+      {/* Header: Dropdown aligned right */}
+      <div className="flex justify-between items-center mb-3">
+        <h2 className="text-white text-base font-semibold">Employee Expenses</h2>
+        <select
+          className="p-1.5 rounded-md bg-slate-700 text-white text-sm border border-slate-600"
+          value={selectedEmployeeName}
+          onChange={(e) => setSelectedEmployeeName(e.target.value)}
+        >
+          <option value="">Select Employee</option>
+          {employeeExpenses.categories.map((name, index) => (
+            <option key={index} value={name}>
+              {name}
+            </option>
+          ))}
+        </select>
+      </div>
+
+      {/* Chart or fallback */}
+      <div className="h-[300px]">
+        {selectedEmployeeName ? (
+          <HighchartsReact highcharts={Highcharts} options={pieExpenseOptions} />
+        ) : (
+          <div className="h-full flex items-center justify-center text-sm text-white bg-slate-700 rounded-md">
+            Please select an employee
+          </div>
+        )}
+      </div>
     </div>
   );
 };

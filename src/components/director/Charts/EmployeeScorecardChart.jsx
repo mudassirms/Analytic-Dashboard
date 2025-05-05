@@ -53,7 +53,7 @@ const EmployeeScoreDonut = () => {
   };
 
   return (
-    <div className="w-full max-w-xl h-[270px] mx-auto bg-slate-800 p-3 rounded-xl shadow-md overflow-hidden">
+    <div className="w-full max-w-xl h-[300px] mx-auto bg-slate-800 p-4 rounded-xl shadow-md overflow-hidden">
       {/* Header: Dropdown aligned right */}
       <div className="flex justify-between items-center mb-2">
         <h2 className="text-white text-base font-semibold">Employee Performance</h2>

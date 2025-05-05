@@ -13,24 +13,26 @@ const StatCardsGrid = ({ currentFilters }) => {
   const navigate = useNavigate();
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-      {stats.map((stat) => (
-        <div
-          key={stat.label}
-          onClick={() =>
-            navigate('/director/po-details', {
-              state: {
-                filter: stat.filter,
-                userFilters: currentFilters, // Pass current filters
-              },
-            })
-          }
-          className="cursor-pointer bg-slate-800 rounded-xl p-6 shadow-md hover:shadow-lg hover:shadow-cyan-500/20 hover:scale-[1.015] transition-all duration-300"
-        >
-          <div className="text-white font-semibold text-sl mb-2">{stat.label}</div>
-          <div className={`text-3xl font-semibold ${stat.color}`}>{stat.value}</div>
-        </div>
-      ))}
+    <div className="overflow-x-auto">
+      <div className="flex gap-4 w-max px-2 py-4">
+        {stats.map((stat) => (
+          <div
+            key={stat.label}
+            onClick={() =>
+              navigate('/director/po-details', {
+                state: {
+                  filter: stat.filter,
+                  userFilters: currentFilters,
+                },
+              })
+            }
+            className="min-w-[162px] cursor-pointer bg-slate-800 rounded-xl p-4 shadow-md hover:shadow-lg hover:shadow-cyan-500/20 hover:scale-[1.015] transition-all duration-300"
+          >
+            <div className="text-white font-semibold text-sm mb-2">{stat.label}</div>
+            <div className={`text-2xl font-bold text-center ${stat.color}`}>{stat.value}</div>
+          </div>
+        ))}
+      </div>
     </div>
   );
 };
