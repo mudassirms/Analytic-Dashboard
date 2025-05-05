@@ -32,7 +32,6 @@ const LoginPage = () => {
       {/* School Name Heading */}
       <div className="relative z-10 text-center mb-10">
         <h1 className="text-5xl font-extrabold text-cyan-300 mb-8">
-          Green Valley International School
         </h1>
         <p className="text-xl text-gray-300 tracking-wide">
           Dashboard and Reporting System
