@@ -79,9 +79,9 @@ const DirectorView = () => {
           </div>
         </>
       ) : (
-        <div className="mt-10">
-          <PODetailTable filters={filters} />
-        </div>
+         <div className="mt-10">
+    <PODetailTable filters={filters} onBack={() => setShowPOTable(false)} />
+  </div>
       )}
     </div>
   );

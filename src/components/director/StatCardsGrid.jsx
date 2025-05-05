@@ -26,7 +26,7 @@ const StatCardsGrid = ({ currentFilters }) => {
                 },
               })
             }
-            className="min-w-[162px] cursor-pointer bg-slate-800 rounded-xl p-4 shadow-md hover:shadow-lg hover:shadow-cyan-500/20 hover:scale-[1.015] transition-all duration-300"
+            className="min-w-[150px] cursor-pointer bg-slate-800 rounded-xl p-4 shadow-md hover:shadow-lg hover:shadow-cyan-500/20 hover:scale-[1.015] transition-all duration-300"
           >
             <div className="text-white font-semibold text-sm mb-2">{stat.label}</div>
             <div className={`text-2xl font-bold text-center ${stat.color}`}>{stat.value}</div>
