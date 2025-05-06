@@ -1,49 +1,42 @@
 import { useState } from 'react';
 import Highcharts from 'highcharts';
 import HighchartsReact from 'highcharts-react-official';
+import { poTrendData, yearlyData } from '../../../data/directorData';
 
-const POTrendChart = ({ poTrendData, yearlyData }) => {
-  const [view, setView] = useState('monthly'); 
+const POTrendChart = () => {
+  const [view, setView] = useState('monthly'); // fixed useState typo
 
   const selectedData = view === 'monthly' ? poTrendData : yearlyData;
 
   const options = {
     chart: {
       type: 'spline',
-      backgroundColor: '#1f2937', // Dark background
+      backgroundColor: '#1e293b',
     },
     title: {
-      text: 'POs Monthly / Yearly Trend',
+      text: 'POs Amount Submitted',
       style: {
-        color: '#e5e7eb', 
-        fontSize: '20px', 
+        color: '#ffffff',
+        fontSize: '18px',
       },
     },
     xAxis: {
       categories: selectedData.map(item => item.date),
       title: {
         text: view === 'monthly' ? 'Month' : 'Year',
-        style: {
-          color: '#e5e7eb', 
-        },
+        style: { color: '#ffffff' },
       },
       labels: {
-        style: {
-          color: '#e5e7eb', 
-        },
+        style: { color: '#ffffff' },
       },
     },
     yAxis: {
       title: {
         text: 'Amount ($)',
-        style: {
-          color: '#e5e7eb',
-        },
+        style: { color: '#ffffff' },
       },
       labels: {
-        style: {
-          color: '#e5e7eb', 
-        },
+        style: { color: '#ffffff' },
       },
     },
     series: [
@@ -53,9 +46,9 @@ const POTrendChart = ({ poTrendData, yearlyData }) => {
         color: {
           linearGradient: [0, 0, 300, 0],
           stops: [
-            [0, '#0ea5e9'], // Cyan-Blue
-            [0.5, '#10b981'], // Green
-            [1, '#f97316'], // Orange 
+            [0, '#0ea5e9'],
+            [0.5, '#10b981'],
+            [1, '#f97316'],
           ],
         },
         marker: {
@@ -64,25 +57,26 @@ const POTrendChart = ({ poTrendData, yearlyData }) => {
         },
       },
     ],
-    credits: { enabled: false },
     tooltip: {
-      backgroundColor: 'rgba(0, 0, 0, 0.7)', 
-      style: {
-        color: '#fff', 
-      },
+      backgroundColor: '#334155',
+      style: { color: '#ffffff' },
     },
+    legend: {
+      itemStyle: { color: '#ffffff' },
+      itemHoverStyle: { color: '#ffff00' },
+    },
+    credits: { enabled: false },
   };
 
   return (
-    <div className="p-4 bg-gray-800 rounded-lg">
-      {/* Button Container */}
+    <div className="p-4 bg-slate-800 rounded-md">
       <div className="text-center mb-4">
         <button
           onClick={() => setView('monthly')}
           style={{
             padding: '6px 12px',
-            backgroundColor: view === 'monthly' ? '#3b82f6' : '#e5e7eb',
-            color: view === 'monthly' ? '#fff' : '#000',
+            backgroundColor: view === 'monthly' ? '#2563eb' : '#475569',
+            color: '#ffffff',
             border: 'none',
             borderRadius: '4px',
             cursor: 'pointer',
@@ -96,8 +90,8 @@ const POTrendChart = ({ poTrendData, yearlyData }) => {
           onClick={() => setView('yearly')}
           style={{
             padding: '6px 12px',
-            backgroundColor: view === 'yearly' ? '#3b82f6' : '#e5e7eb',
-            color: view === 'yearly' ? '#fff' : '#000',
+            backgroundColor: view === 'yearly' ? '#2563eb' : '#475569',
+            color: '#ffffff',
             border: 'none',
             borderRadius: '4px',
             cursor: 'pointer',
@@ -108,7 +102,6 @@ const POTrendChart = ({ poTrendData, yearlyData }) => {
         </button>
       </div>
 
-      {/* Highcharts Component */}
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );

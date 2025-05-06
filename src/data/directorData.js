@@ -66,6 +66,7 @@ export const poAgeDistributionCustomer = [
     ],
   },
 ];
+
 export const poTrendData = [
   { date: "Jan", amount: 20000 },
   { date: "Feb", amount: 30000 },
@@ -74,3 +75,12 @@ export const poTrendData = [
   { date: "May", amount: 37000 },
   { date: "Jun", amount: 50000 },
 ];
+
+export const yearlyData = [
+  { date: "2022", amount: 24500 },
+  { date: "2023", amount: 30000 },
+  { date: "2024", amount: 36500 },
+  { date: "2025", amount: 40000 },
+];
+
+

@@ -69,7 +69,7 @@ const CustomHeatmap = () => {
 
   return (
 <div className="px-4 pt-3 pb-1 rounded-md bg-slate-800 text-white">
-<h2 className="text-xl mb-4">Country-Customer Matrix</h2>
+<h2 className="text-xl mb-4">Country-Customer Amount Submitted</h2>
 
       <div className="flex gap-4 mb-4">
         <select

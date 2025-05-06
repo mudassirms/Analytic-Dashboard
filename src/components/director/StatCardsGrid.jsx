@@ -24,7 +24,7 @@ const StatCardsGrid = ({ currentFilters }) => {
                 state: {
                   filter: stat.filter,
                   userFilters: currentFilters,
-                  from: location.pathname, // capture the path you're navigating from
+                  from: location.pathname, 
                 },
               })
             }

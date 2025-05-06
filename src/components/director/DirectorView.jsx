@@ -21,6 +21,7 @@ import {
   poAgeDistributionCustomer,
   poTrendData,
 } from "../../data/directorData";
+import IncomeVsExpenseChart from "./Charts/IncomeVsExpenseChart";
 
 const DirectorView = () => {
   const [filters] = useState({
@@ -69,6 +70,7 @@ const DirectorView = () => {
             <POChart />
             <Heatmap />
             <POTrendChart poTrendData={poTrendData} yearlyData={[]} />
+            <IncomeVsExpenseChart/>
           </div>
 
           <div className="mt-8 text-left">
