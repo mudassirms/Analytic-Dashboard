@@ -33,7 +33,7 @@ const IncomeExpenseChart = () => {
       height: 300,
     },
     title: {
-      text: "Income vs Expense",
+      text: "",
       style: { color: "#ffffff", fontSize: "16px" },
     },
     xAxis: {
