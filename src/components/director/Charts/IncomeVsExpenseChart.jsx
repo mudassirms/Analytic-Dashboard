@@ -10,17 +10,15 @@ const rawData = [
   { month: "Apr", income: 6000, expense: 4300 },
   { month: "May", income: 8000, expense: 5500 },
   { month: "Jun", income: 7500, expense: 5200 },
-  { month: "Jul", income: 7000, expense: 7000 }, // New month added
+  { month: "Jul", income: 7000, expense: 7000 },
 ];
 
 const IncomeExpenseChart = () => {
-  const [currency, setCurrency] = useState("USD"); // USD or GHS
+  const [currency, setCurrency] = useState("USD");
   const exchangeRate = 13.5;
   const currencySymbol = currency === "USD" ? "$" : "₵";
 
-  // Convert the data based on the selected currency
   const convertedData = useMemo(() => {
-    console.log('Raw Data:', rawData);  // Log the rawData for debugging
     return rawData.map((item) => ({
       month: item.month,
       income: currency === "USD" ? item.income : item.income * exchangeRate,
@@ -28,48 +26,48 @@ const IncomeExpenseChart = () => {
     }));
   }, [currency]);
 
-  console.log("Converted Data: ", convertedData); // Debugging: Check if all months are there
-
   const options = {
     chart: {
       type: "column",
-      backgroundColor: "#1e293b", // matching bg-slate-800
+      backgroundColor: "#1e293b",
+      height: 300,
     },
     title: {
-      text: "",
-      style: { color: "#ffffff" },
+      text: "Income vs Expense",
+      style: { color: "#ffffff", fontSize: "16px" },
     },
     xAxis: {
       categories: convertedData.map((item) => item.month),
-      title: { text: "Month", style: { color: "#ffffff" } },
-      labels: { style: { color: "#ffffff" } },
+      title: { text: "Month", style: { color: "#cbd5e1" } },
+      labels: { style: { color: "#cbd5e1" } },
+      gridLineColor: "#334155",
     },
     yAxis: {
       title: {
         text: `Amount (${currencySymbol})`,
-        style: { color: "#ffffff" },
+        style: { color: "#cbd5e1" },
       },
       labels: {
         formatter: function () {
           return currencySymbol + this.value.toFixed(0);
         },
-        style: { color: "#ffffff" },
+        style: { color: "#cbd5e1" },
       },
+      gridLineColor: "#334155",
     },
     tooltip: {
       shared: true,
       backgroundColor: "#334155",
       style: { color: "#ffffff" },
       formatter: function () {
-        const month = this.points[0].key; // Access the current month from the x-axis
+        const month = this.points[0].key;
         return `<b>${month}</b><br/>
           Income: ${currencySymbol}${this.points[0].y.toFixed(2)}<br/>
           Expense: ${currencySymbol}${this.points[1].y.toFixed(2)}`;
       },
     },
     legend: {
-      itemStyle: { color: "#ffffff" },
-      itemHoverStyle: { color: "#ffff00" },
+      itemStyle: { color: "#e2e8f0" },
     },
     plotOptions: {
       column: {
@@ -92,11 +90,10 @@ const IncomeExpenseChart = () => {
   };
 
   return (
-    <div className="bg-slate-800 p-4 rounded-md">
+    <div className="w-full max-w-sm mx-auto my-6 bg-slate-800 p-4 rounded-xl shadow-md">
       <div className="flex justify-between items-center mb-4">
         <h2 className="text-lg font-semibold text-white">Income vs Expense</h2>
         <div className="space-x-2">
-          {/* Dropdown for selecting currency */}
           <select
             value={currency}
             onChange={(e) => setCurrency(e.target.value)}
@@ -107,7 +104,6 @@ const IncomeExpenseChart = () => {
           </select>
         </div>
       </div>
-
       <HighchartsReact highcharts={Highcharts} options={options} />
     </div>
   );
